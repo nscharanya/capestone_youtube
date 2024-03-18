@@ -179,8 +179,7 @@ def channels_table():
     mydb.commit()
 
 
-    #mydb = None           #Closed
-    #cursor = None
+    
     try:
         create_query = '''create table if not exists channels(
             Channel_name varchar(100),
