@@ -32,9 +32,6 @@ def get_channel_data(channel_id):
                 thumbnails= i['snippet']['thumbnails']['default']['url'])
     return data1
   
-#channel_id = "UC2J_VKrAzOEJuQvFFtj3KUw"       # csk
-#details = get_channel_data(channel_id)
-#pprint(details)
   
 # For video_ids 
 def get_video_ids(channel_id):
@@ -60,9 +57,7 @@ def get_video_ids(channel_id):
       break
   return video_ids
 
-#Video_Ids = get_video_ids(channel_id)
-#print(len(Video_Ids))
-## pprint(Video_Ids)
+
 
 # get video data
 def get_video_data(video_ids):
@@ -92,9 +87,7 @@ def get_video_data(video_ids):
       video_data.append(data)
   return video_data
 
-#Video_details = get_video_data(video_ids)
-#print(len(Video_details))
-#pprint(Video_details)
+
 
 # get comment information
 def get_comment_data(video_ids):
@@ -117,9 +110,7 @@ def get_comment_data(video_ids):
     pass
   return Comment_data
 
-#Comment_details = get_comment_data(Video_Ids)
-#print(len(Comment_details))
-#pprint(Comment_details)
+
 
 # get play_list details
 def get_playlist_data(channel_id):
@@ -148,9 +139,7 @@ def get_playlist_data(channel_id):
       break
   return Playlist_data
 
-#Playlist_details = get_playlist_data(channel_id)
-#print(len(Playlist_details))
-#pprint(Playlist_details)
+
 
 # Upload to Mongodb - MongoDB Connection
 import pymongo
@@ -207,11 +196,7 @@ def channels_table():
     except:
         print("Channels table already created")
 
-    #finally:
-    #if mydb is not None:
-        #mydb.close()
-    #if cursor is not None:  
-        #cursor.close()
+
 
     channel_list=[]
     db = client["Youtube_data"]
@@ -257,8 +242,7 @@ def playlists_table():
     cursor.execute(drop_query)
     mydb.commit()
 
-    #mydb = None           #Closed
-    #cursor = None
+    
     try:
         create_query = '''create table if not exists playlists(
         Playlist_Id varchar(100) primary key,
@@ -405,8 +389,7 @@ def comments_table():
     cursor.execute(drop_query)
     mydb.commit()
 
-    #mydb = None           #Closed
-    #cursor = None
+    
     try:
         create_query = '''create table if not exists comments(Comment_Id varchar(100) primary key,
                                                             Video_Id varchar(50),
